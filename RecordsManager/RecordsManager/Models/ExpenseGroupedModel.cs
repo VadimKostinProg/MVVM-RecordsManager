@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace RecordsManager.Models
 {
-    public class ExpenseDateModel
+    public class ExpenseGroupedModel
     {
         public string Date { get; set; } = null!; 
-        public string PurposeJoined { get; set; } = null!;
+        public string PurposeGrouped { get; set; } = null!;
         public decimal TotalPrice { get; set; }
     }
 }

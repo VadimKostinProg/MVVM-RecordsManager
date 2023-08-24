@@ -2,10 +2,10 @@
 
 namespace RecordsManager.Models
 {
-    public class RecordDateModel
+    public class RecordGroupedModel
     {
         public string Date { get; set; } = null!;
-        public string TimeJoined { get; set; } = null!;
+        public string TimeGrouped { get; set; } = null!;
         public decimal TotalPrice { get; set; }
     }
 }
