@@ -1,13 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "LIZB+snx4c5Wskth2Q0xpCWg82fRY9losnXrJOtErmxNqsbl4X/rL39HW+8SEyD7m8lcdOOaHz67xGkTCf74qg==",
+  "dgSpecHash": "7y8C4qPDIkpEFcJ/Xpve0F8dtxnm2Qbg2sfgGG0hEbCiwoc6RESWWft+FXEXWKnZgDzimUBrTqgqfpRRM6UCdw==",
   "success": true,
   "projectFilePath": "D:\\Programming\\RecordsManager\\RecordsManager\\RecordsManager\\RecordsManager.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\kosti\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\kosti\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\kosti\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.2\\microsoft.data.sqlclient.5.0.2.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\kosti\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.10\\microsoft.entityframeworkcore.7.0.10.nupkg.sha512",

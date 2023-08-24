@@ -10,7 +10,10 @@ namespace DataAccess.Entities
     public sealed class Expense : EntityBase
     {
         [Required]
-        public DateTime ExpenseDateTime { get; set; }
+        public DateOnly Date { get; set; }
+
+        [Required]
+        public TimeOnly Time { get; set; }
 
         [Required]
         public string Purpose { get; set; } = null!;

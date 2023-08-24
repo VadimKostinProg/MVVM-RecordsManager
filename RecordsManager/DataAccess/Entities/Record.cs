@@ -11,8 +11,10 @@ namespace DataAccess.Entities
     public sealed class Record : EntityBase
     {
         [Required]
-        [DisplayName("Record date and time")]
-        public DateTime RecordDateTime { get; set; }
+        public DateOnly Date { get; set; }
+
+        [Required]
+        public TimeOnly Time { get; set; }
 
         [Required]
         public string Name { get; set; } = null!;
