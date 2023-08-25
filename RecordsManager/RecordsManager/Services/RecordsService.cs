@@ -22,7 +22,8 @@ namespace RecordsManager.Services
             _mapper = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<Record, RecordModel>().ReverseMap();
-            }).CreateMapper();
+            })
+            .CreateMapper();
         }
 
         public async Task CreateAsync(RecordModel model)
@@ -46,6 +47,7 @@ namespace RecordsManager.Services
             var records = await _recordsRepository.GetAllAsync();
 
             var recordsGrouped = records
+                .OrderBy(x => x.Date)
                 .GroupBy(x => x.Date)
                 .Select(group => new RecordGroupedModel()
                 {

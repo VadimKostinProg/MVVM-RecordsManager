@@ -24,7 +24,9 @@ namespace DataAccess.Entities
 
         [Phone]
         public string? PhoneNumber { get; set; }
+
         public string? Address { get; set; }
+
         public string? Procedure { get; set; }
 
         [Required]
