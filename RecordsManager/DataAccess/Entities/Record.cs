@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +11,16 @@ namespace DataAccess.Entities
 {
     public sealed class Record : EntityBase
     {
-        [Required]
-        public DateOnly Date { get; set; }
-
-        [Required]
-        public TimeOnly Time { get; set; }
+        [NotMapped]
+        public TimeOnly Time
+        {
+            get { return new TimeOnly(DateTimeProperty.Hour, DateTimeProperty.Minute, DateTimeProperty.Second); }
+            set
+            {
+                DateTimeProperty = new DateTime(DateTimeProperty.Year, DateTimeProperty.Month, DateTimeProperty.Day,
+                    value.Hour, value.Minute, value.Second);
+            }
+        }
 
         [Required]
         public string Name { get; set; } = null!;

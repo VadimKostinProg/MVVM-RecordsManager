@@ -52,7 +52,7 @@ namespace DataAccess.Repositories
             if (predicate != null)
                 entities = entities.Where(predicate);
 
-            return await entities.ToListAsync();
+            return entities.ToList();
         }
 
         public virtual async Task<T?> GetByIdAsync(Guid id)

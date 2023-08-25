@@ -1,0 +1,85 @@
+﻿<Window x:Class="RecordsManager.Views.ReportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecordsManager.Views"
+        mc:Ignorable="d"
+        Title="ReportWindow" 
+        Height="600" Width="500"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontSize="16"
+        Background="#FFC1C1C1">
+    <Grid Margin="5" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Start Date:" 
+               Grid.Row="0" Grid.Column="0"
+               HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Calendar Grid.Row="0"
+                  HorizontalAlignment="Center" Margin="0,0,0,10" Height="168" VerticalAlignment="Bottom" />
+
+        <Label Content="End Date:" 
+               Grid.Row="0" Grid.Column="1"
+               HorizontalAlignment="Center" VerticalAlignment="Top" />
+        <Calendar Grid.Row="0" Grid.Column="1"
+                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" />
+
+        <TextBox x:Name="StartDate_TextBox"
+                 Grid.Row="1" Grid.Column="0" 
+                 Margin="33,15,33,15" 
+                 IsReadOnly="True" />
+        <TextBox x:Name="EndDate_TextBox"
+                 Grid.Row="1" Grid.Column="1" 
+                 Margin="33,15,33,15" 
+                 IsReadOnly="True" />
+
+        <Label Content="Total Incomes:"
+               Grid.Row="2" Grid.Column="0"
+               HorizontalAlignment="Left" VerticalAlignment="Center" 
+               Margin="70,0,0,0" />
+        <TextBox x:Name="Incomes_TextBox" 
+                 Grid.Row="2" Grid.Column="1" 
+                 Margin="33,20,33,20" 
+                 IsReadOnly="True" />
+
+        <Label Content="Total Expenses:"
+               Grid.Row="3" Grid.Column="0"
+               HorizontalAlignment="Left" VerticalAlignment="Center" 
+               Margin="70,0,0,0" />
+        <TextBox x:Name="Expenses_TextBox" 
+                 Grid.Row="3" Grid.Column="1" 
+                 Margin="33,20,33,20" 
+                 IsReadOnly="True" />
+
+        <Label Content="Total Profit:"
+               Grid.Row="4"
+               HorizontalAlignment="Left" VerticalAlignment="Center" 
+               Margin="70,0,0,0" />
+        <TextBox x:Name="Profit_TextBox" 
+                 Grid.Row="4" Grid.Column="1" 
+                 Margin="33,20,33,20" 
+                 IsReadOnly="True" />
+
+        <Button Content="Count Profit" 
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Grid.Row="5" Grid.Column="0" 
+                Width="140"/>
+        <Button Content="Back" 
+                HorizontalAlignment="Center" VerticalAlignment="Center" 
+                Grid.Row="5" Grid.Column="1"
+                Width="140" />
+    </Grid>
+</Window>

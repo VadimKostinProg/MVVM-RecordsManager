@@ -10,11 +10,11 @@ none
 false
 TRACE;DEBUG;NET;NET7_0;NETCOREAPP
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\App.xaml
-1-1644662438
+41854004875
 
-19-1332541860
+26-1238003396
 22877203426
-Views\MainWindow.xaml;
+Views\MainWindow.xaml;Views\NewExpenseWindow.xaml;Views\NewRecordWindow.xaml;Views\ReportWindow.xaml;
 
 False
 
