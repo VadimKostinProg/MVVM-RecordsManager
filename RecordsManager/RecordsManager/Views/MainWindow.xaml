@@ -15,10 +15,11 @@
                 <Grid Background="#FFE5E5E5">
                     <ListView x:Name="Records_ListView"
                               ItemsSource="{Binding Records}"
-                              SelectedItem="{Binding SelectedRecordsDate}">
+                              SelectedItem="{Binding SelectedGroupedRecord}">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Manage records"/>
+                                <MenuItem Header="Manage records"
+                                          Command="{Binding OpenRecordsWindowCommand}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>
@@ -41,7 +42,7 @@
                 <Grid Background="#FFE5E5E5">
                     <ListView x:Name="Outcomes_ListView"
                               ItemsSource="{Binding Expenses}"
-                              SelectedItem="{Binding SelectedExpensesDate}">
+                              SelectedItem="{Binding SelectedGroupedExpense}">
                         <ListView.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="Manage expenses"/>

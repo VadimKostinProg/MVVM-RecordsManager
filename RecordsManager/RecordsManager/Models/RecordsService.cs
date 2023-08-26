@@ -49,8 +49,7 @@ namespace RecordsManager.Models
             var records = await _recordsRepository.GetAllAsync();
 
             var recordsGrouped = records
-                .OrderBy(x => x.Date)
-                .ThenBy(x => x.Time)
+                .OrderBy(x => x.Time)
                 .GroupBy(x => x.Date)
                 .Select(group => new RecordGroupedModel()
                 {
@@ -60,12 +59,19 @@ namespace RecordsManager.Models
                 })
                 .ToList();
 
-            return recordsGrouped;
+            this.FillEmptyDates(recordsGrouped);
+
+            return recordsGrouped.OrderBy(record => record.Date.ToDateOnly()).ToList();
         }
 
         public async Task<List<RecordModel>> GetByDateAsync(string date)
         {
-            var records = await _recordsRepository.GetAllAsync(record => record.Date.ToString() == date);
+            var recordDateTime = Convert.ToDateTime(date);
+            var records = 
+                (await _recordsRepository.GetAllAsync(record => 
+                record.DateTimeProperty.Date == recordDateTime))
+            .OrderBy(record => record.Time)
+            .ToList();
 
             return _mapper.Map<List<RecordModel>>(records);
         }
@@ -84,10 +90,38 @@ namespace RecordsManager.Models
 
         public async Task UpdateAsync(RecordModel model)
         {
+            //Check for existance of the record with passed Id
+            if (await _recordsRepository.GetByIdAsync(model.Id) is null)
+            {
+                throw new KeyNotFoundException("Record with such id is not found.");
+            }
+
             await this.ValidateRecord(model);
 
             var record = _mapper.Map<Record>(model);
             await _recordsRepository.UpdateAsync(record);
+        }
+
+        private void FillEmptyDates(List<RecordGroupedModel> recordsGrouped)
+        {
+            if (!recordsGrouped.Any()) return;
+
+            var startDate = recordsGrouped.Min(record => record.Date.ToDateOnly());
+            var endDate = recordsGrouped.Max(record => record.Date.ToDateOnly());
+
+            for(DateOnly date = startDate; date < endDate; date = date.AddDays(1))
+            {
+                if (recordsGrouped.Any(record => record.Date.ToDateOnly() == date)) continue;
+
+                var newRecordGrouped = new RecordGroupedModel()
+                {
+                    Date = date.ToString(),
+                    TimeGrouped = string.Empty,
+                    TotalPrice = 0,
+                };
+
+                recordsGrouped.Add(newRecordGrouped);
+            }
         }
 
         //Method for validating the record
@@ -99,12 +133,12 @@ namespace RecordsManager.Models
 
             var records = await _recordsRepository.GetAllAsync(record => record.DateTimeProperty == modelDateTime);
 
-            if(records.Any())
+            if(records.Any(record => record.Id != model.Id))
             {
                 throw new ArgumentException("Record with such date and time already exists.");
             }
 
-            //Checking for null or empty name
+            //Check for null or empty name
             if(string.IsNullOrEmpty(model.Name))
             {
                 throw new ArgumentNullException("Customer name cannot be blank.");

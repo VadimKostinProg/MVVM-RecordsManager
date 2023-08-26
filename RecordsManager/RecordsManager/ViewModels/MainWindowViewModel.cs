@@ -42,8 +42,8 @@ namespace RecordsManager.ViewModels
             }
         }
 
-        public RecordGroupedModel SelectedRecordsDate { get; set; }
-        public ExpenseGroupedModel SelectedExpensesDate { get; set; }
+        public RecordGroupedModel SelectedGroupedRecord { get; set; }
+        public ExpenseGroupedModel SelectedGroupedExpense { get; set; }
         #endregion
 
         public MainWindowViewModel()
@@ -93,6 +93,16 @@ namespace RecordsManager.ViewModels
             get => new RelayCommand(obj =>
             {
                 var window = new NewExpenseWindow();
+
+                window.ShowDialog();
+            });
+        }
+
+        public RelayCommand OpenRecordsWindowCommand
+        {
+            get => new RelayCommand(obj =>
+            {
+                var window = new RecordsWindow(SelectedGroupedRecord.Date);
 
                 window.ShowDialog();
             });

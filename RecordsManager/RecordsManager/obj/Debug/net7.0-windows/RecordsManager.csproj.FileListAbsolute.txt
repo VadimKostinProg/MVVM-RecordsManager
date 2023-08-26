@@ -65,3 +65,5 @@ D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-win
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\NewExpenseWindow.baml
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\NewRecordWindow.baml
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\ReportWindow.baml
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\RecordsWindow.g.cs
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\RecordsWindow.baml

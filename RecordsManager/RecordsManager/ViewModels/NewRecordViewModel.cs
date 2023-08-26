@@ -44,7 +44,7 @@ namespace RecordsManager.ViewModels
                     var record = new RecordModel()
                     {
                         Date = new DateOnly(this.Date.Year, this.Date.Month, this.Date.Day), 
-                        Time = this.ConvertToTimeOnly(this.Time),
+                        Time = this.Time.ToTimeOnly(),
                         Name = this.Name,
                         Email = this.Email,
                         PhoneNumber = this.PhoneNumber,
@@ -64,20 +64,6 @@ namespace RecordsManager.ViewModels
                     MessageBox.Show(ex.Message);
                 }
             });
-        }
-        #endregion
-
-        #region PRIVATE MEMBERS
-        private TimeOnly ConvertToTimeOnly(string time)
-        {
-            if(time.Count(chr => chr == ':') != 1 || time.Length > 5 || time.Length < 4)
-            {
-                throw new ArgumentException("Incorrect format of time");
-            }
-
-            var args = time.Split(':').Select(arg => int.Parse(arg)).ToArray();
-
-            return new TimeOnly(args[0], args[1]);
         }
         #endregion
     }

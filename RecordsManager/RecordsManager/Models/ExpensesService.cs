@@ -82,29 +82,39 @@ namespace RecordsManager.Models
 
         public async Task UpdateAsync(ExpenseModel model)
         {
+            //Check for existance of the expense with passed Id
+            if (await _expensesRepository.GetByIdAsync(model.Id) is null)
+            {
+                throw new KeyNotFoundException("Expense with such id is not found.");
+            }
+
             await this.ValidateExpense(model);
 
             var expense = _mapper.Map<Expense>(model);
             await _expensesRepository.UpdateAsync(expense);
         }
 
+        //Method for validation the expense
         private async Task ValidateExpense(ExpenseModel model)
         {
+            //Check whether the expense with such date and purpose already exists
             var modelDateTime = new DateTime(model.Date.Year, model.Date.Month, model.Date.Day);
 
             var expenses = await _expensesRepository.GetAllAsync(expense =>
             expense.DateTimeProperty == modelDateTime && expense.Purpose == model.Purpose);
 
-            if (expenses.Any())
+            if (expenses.Any(expense => expense.Id != model.Id))
             {
                 throw new ArgumentException("Expense with such purpose for scuh date already exists.");
             }
 
+            //Check for null or empty purpose
             if(string.IsNullOrEmpty(model.Purpose))
             {
                 throw new ArgumentNullException("Purpose of expense cannot be blank.");
             }
 
+            //Check for negative price
             if(model.Price <= 0)
             {
                 throw new ArgumentException("Price of expense must be positive.");
