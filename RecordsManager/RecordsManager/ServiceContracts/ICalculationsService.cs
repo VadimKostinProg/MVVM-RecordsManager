@@ -18,6 +18,6 @@ namespace RecordsManager.ServiceContracts
         /// <param name="startDate">Start date of the range.</param>
         /// <param name="endDate">End date of the range.</param>
         /// <returns>Report with information of total incomes, expenses and profit.</returns>
-        Task<ReportModel> CountProfit(DateOnly startDate, DateOnly endDate); 
+        Task<ReportModel> CountProfitAsync(DateOnly startDate, DateOnly endDate); 
     }
 }

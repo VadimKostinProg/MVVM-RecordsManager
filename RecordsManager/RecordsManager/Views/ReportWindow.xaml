@@ -29,29 +29,40 @@
         <Label Content="Start Date:" 
                Grid.Row="0" Grid.Column="0"
                HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Calendar Grid.Row="0"
-                  HorizontalAlignment="Center" Margin="0,0,0,10" Height="168" VerticalAlignment="Bottom" />
+        <Calendar x:Name="StartDate_Calendar"
+                  SelectedDate="{Binding SelectedStartDate}"
+                  Grid.Row="0" Grid.Column="0"
+                  HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                  Margin="0,0,0,10" />
 
         <Label Content="End Date:" 
                Grid.Row="0" Grid.Column="1"
                HorizontalAlignment="Center" VerticalAlignment="Top" />
-        <Calendar Grid.Row="0" Grid.Column="1"
-                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,10" />
+        <Calendar x:Name="EndDate_Calendar"
+                  SelectedDate="{Binding SelectedEndDate}"
+                  Grid.Row="0" Grid.Column="1"
+                  HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                  Margin="0,0,0,10" />
 
         <TextBox x:Name="StartDate_TextBox"
+                 Text="{Binding SelectedDate, ElementName=StartDate_Calendar, StringFormat=d}"
                  Grid.Row="1" Grid.Column="0" 
                  Margin="33,15,33,15" 
-                 IsReadOnly="True" />
+                 IsReadOnly="True" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
         <TextBox x:Name="EndDate_TextBox"
+                 Text="{Binding SelectedDate, ElementName=EndDate_Calendar, StringFormat=d}"
                  Grid.Row="1" Grid.Column="1" 
                  Margin="33,15,33,15" 
-                 IsReadOnly="True" />
+                 IsReadOnly="True" 
+                 VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
 
         <Label Content="Total Incomes:"
                Grid.Row="2" Grid.Column="0"
                HorizontalAlignment="Left" VerticalAlignment="Center" 
                Margin="70,0,0,0" />
         <TextBox x:Name="Incomes_TextBox" 
+                 Text="{Binding TotalIncomes}"
                  Grid.Row="2" Grid.Column="1" 
                  Margin="33,20,33,20" 
                  IsReadOnly="True" />
@@ -61,6 +72,7 @@
                HorizontalAlignment="Left" VerticalAlignment="Center" 
                Margin="70,0,0,0" />
         <TextBox x:Name="Expenses_TextBox" 
+                 Text="{Binding TotalExpenses}"
                  Grid.Row="3" Grid.Column="1" 
                  Margin="33,20,33,20" 
                  IsReadOnly="True" />
@@ -70,6 +82,7 @@
                HorizontalAlignment="Left" VerticalAlignment="Center" 
                Margin="70,0,0,0" />
         <TextBox x:Name="Profit_TextBox" 
+                 Text="{Binding TotalProfit}"
                  Grid.Row="4" Grid.Column="1" 
                  Margin="33,20,33,20" 
                  IsReadOnly="True" />
@@ -77,12 +90,13 @@
         <Button Content="Count Profit" 
                 HorizontalAlignment="Center" VerticalAlignment="Center"
                 Grid.Row="5" Grid.Column="0" 
-                Width="140"/>
+                Width="140"
+                Command="{Binding CountProfitCommand}" />
         <Button Content="Cancel" 
                 HorizontalAlignment="Center" VerticalAlignment="Center" 
                 Grid.Row="5" Grid.Column="1"
                 Width="140" 
                 Command="{Binding CloseWindowCommand}"
-                CommandParameter="{Binding ElementName=Report_Window}"/>
+                CommandParameter="{Binding ElementName=Report_Window}" />
     </Grid>
 </Window>

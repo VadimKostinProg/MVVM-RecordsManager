@@ -21,18 +21,21 @@ namespace RecordsManager.Models
             _expensesRepository = new RepositoryBase<Expense>();
         }
 
-        public async Task<ReportModel> CountProfit(DateOnly startDate, DateOnly endDate)
+        public async Task<ReportModel> CountProfitAsync(DateOnly startDate, DateOnly endDate)
         {
             if(startDate > endDate)
             {
                 throw new ArgumentException("Start date must be less or equel the end date.");
             }
 
+            var startDateTime = startDate.ToDateTime(TimeOnly.MinValue);
+            var endDateTime = endDate.ToDateTime(TimeOnly.MinValue).AddDays(1);
+
             var recrods = await _recordsRepository.GetAllAsync(record => 
-            record.Date >= startDate & record.Date <= endDate);
+            record.DateTimeProperty >= startDateTime && record.DateTimeProperty < endDateTime);
 
             var expenses = await _expensesRepository.GetAllAsync(expense =>
-            expense.Date >= startDate & expense.Date <= endDate);
+            expense.DateTimeProperty >= startDateTime && expense.DateTimeProperty < endDateTime);
 
             var report = new ReportModel()
             {
