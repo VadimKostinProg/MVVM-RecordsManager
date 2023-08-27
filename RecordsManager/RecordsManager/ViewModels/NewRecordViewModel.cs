@@ -18,7 +18,7 @@ namespace RecordsManager.ViewModels
 
         #region BINDING PROPERTIES
         public DateTime Date { get; set; } = DateTime.Now;
-        public string Time { get; set; }
+        public DateTime Time { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
@@ -43,7 +43,7 @@ namespace RecordsManager.ViewModels
 
                     var record = new RecordModel()
                     {
-                        Date = new DateOnly(this.Date.Year, this.Date.Month, this.Date.Day), 
+                        Date = this.Date.ToDateOnly(), 
                         Time = this.Time.ToTimeOnly(),
                         Name = this.Name,
                         Email = this.Email,

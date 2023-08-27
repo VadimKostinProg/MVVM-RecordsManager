@@ -69,3 +69,7 @@ D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-win
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\RecordsWindow.baml
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\ExpensesWindow.g.cs
 D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\Views\ExpensesWindow.baml
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\bin\Debug\net7.0-windows\MaterialDesignColors.dll
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\bin\Debug\net7.0-windows\MaterialDesignThemes.Wpf.dll
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\bin\Debug\net7.0-windows\Microsoft.Xaml.Behaviors.dll
+D:\Programming\RecordsManager\RecordsManager\RecordsManager\obj\Debug\net7.0-windows\App.baml

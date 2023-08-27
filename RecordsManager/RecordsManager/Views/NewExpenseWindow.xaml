@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:RecordsManager.Views"
         mc:Ignorable="d"
         Title="New Expense"
-        Height="450" Width="400"
+        Height="250" Width="400"
         WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize"
         FontSize="16"
@@ -18,8 +18,8 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -28,11 +28,9 @@
                Grid.Row="0" Grid.Column="0"
                VerticalAlignment="Center" 
                Margin="30,0,0,0" />
-        <Calendar Grid.Column="1" 
-                  SelectedDate="{Binding Date}"
-                  Height="170" Width="184"
-                  HorizontalAlignment="Center" 
-                  VerticalAlignment="Center"/>
+        <DatePicker Grid.Column="1"
+                    HorizontalAlignment="Center" Width="175"
+                    SelectedDate="{Binding Date}" Height="30"/>
 
         <Label Content="Purpose:"
                Grid.Row="1" Grid.Column="0"
@@ -40,7 +38,7 @@
                Margin="30,0,0,0" />
         <TextBox x:Name="Purpose_TextBox" 
                  Text="{Binding Purpose}"
-                 Height="101" Width="175"
+                 Height="30" Width="175"
                  Grid.Row="1" Grid.Column="1" 
                  TextWrapping="Wrap" 
                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
@@ -53,22 +51,20 @@
                  Text="{Binding Price}"
                  Width="175"
                  Grid.Row="2" Grid.Column="1"
-                 VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                 VerticalAlignment="Center" HorizontalAlignment="Center" Height="30"/>
 
         <Button Content="Submit"
-                Grid.Row="3" Grid.Column="0"
-                Margin="10,0,10,0"
-                Height="25" 
+                Grid.Row="3"
+                Height="25" Width="175"
                 VerticalAlignment="Center"
                 Command="{Binding AddNewExpenseCommand}"
-                CommandParameter="{Binding ElementName=NewExpense_Window}"/>
+                CommandParameter="{Binding ElementName=NewExpense_Window}" HorizontalAlignment="Center" />
 
         <Button Content="Cancel"
                 Grid.Row="3" Grid.Column="1"
-                Margin="10,0,10,0"
-                Height="25" 
+                Height="25" Width="175"
                 VerticalAlignment="Center"
                 Command="{Binding CloseWindowCommand}"
-                CommandParameter="{Binding ElementName=NewExpense_Window}" />
+                CommandParameter="{Binding ElementName=NewExpense_Window}" HorizontalAlignment="Center" />
     </Grid>
 </Window>

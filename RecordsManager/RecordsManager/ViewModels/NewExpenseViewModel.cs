@@ -38,7 +38,7 @@ namespace RecordsManager.ViewModels
 
                     var expense = new ExpenseModel()
                     {
-                        Date = new DateOnly(this.Date.Year, this.Date.Month, this.Date.Day),
+                        Date = this.Date.ToDateOnly(),
                         Purpose = this.Purpose,
                         Price = this.Price
                     };

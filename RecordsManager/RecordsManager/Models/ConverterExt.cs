@@ -48,13 +48,23 @@ namespace RecordsManager.Models
         }
 
         /// <summary>
-        /// Method for converting string to DateOnly format.
+        /// Method for converting DateTime variable to DateOnly format.
         /// </summary>
         /// <param name="dateTime">DateTime variable to convert.</param>
         /// <returns>DateOnly variable, converted from DateTime.</returns>
         public static DateOnly ToDateOnly(this DateTime dateTime)
         {
             return new DateOnly(dateTime.Year, dateTime.Month, dateTime.Day);
+        }
+
+        /// <summary>
+        /// Method for converting DateTime variable to TimeOnly format.
+        /// </summary>
+        /// <param name="dateTime">DateTime variable to convert.</param>
+        /// <returns>TimeOnly variable, converted from DateTime.</returns>
+        public static TimeOnly ToTimeOnly(this DateTime dateTime)
+        {
+            return new TimeOnly(dateTime.Hour, dateTime.Minute, dateTime.Second);
         }
     }
 }
