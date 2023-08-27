@@ -107,6 +107,16 @@ namespace RecordsManager.ViewModels
                 window.ShowDialog();
             });
         }
+
+        public RelayCommand OpenExpensesWindowCommand
+        {
+            get => new RelayCommand(obj =>
+            {
+                var window = new ExpensesWindow(SelectedGroupedExpense.Date);
+
+                window.ShowDialog();
+            });
+        }
         #endregion
 
         #region PRIVATE FUNCTIONS

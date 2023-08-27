@@ -58,12 +58,16 @@ namespace RecordsManager.Models
                 })
                 .ToList();
 
-            return expensesGrouped;
+            this.FillEmptyGroupedExpenses(expensesGrouped);
+
+            return expensesGrouped.OrderBy(expense => expense.Date.ToDateOnly()).ToList();
         }
 
         public async Task<List<ExpenseModel>> GetByDateAsync(string date)
         {
-            var expenses = await _expensesRepository.GetAllAsync(expense => expense.Date.ToString() == date);
+            var expenseDateTime = Convert.ToDateTime(date);
+            var expenses = await _expensesRepository.GetAllAsync(expense =>
+                expense.DateTimeProperty == expenseDateTime);
 
             return _mapper.Map<List<ExpenseModel>>(expenses);
         }
@@ -92,6 +96,29 @@ namespace RecordsManager.Models
 
             var expense = _mapper.Map<Expense>(model);
             await _expensesRepository.UpdateAsync(expense);
+        }
+
+        //Method for filling empty expenses grouped by date.
+        private void FillEmptyGroupedExpenses(List<ExpenseGroupedModel> expensesGrouped)
+        {
+            if (!expensesGrouped.Any()) return;
+
+            var startDate = expensesGrouped.Min(record => record.Date.ToDateOnly());
+            var endDate = expensesGrouped.Max(record => record.Date.ToDateOnly());
+
+            for (DateOnly date = startDate; date < endDate; date = date.AddDays(1))
+            {
+                if (expensesGrouped.Any(expense => expense.Date.ToDateOnly() == date)) continue;
+
+                var newExpenseGrouped = new ExpenseGroupedModel()
+                {
+                    Date = date.ToString(),
+                    PurposeGrouped = string.Empty,
+                    TotalPrice = 0,
+                };
+
+                expensesGrouped.Add(newExpenseGrouped);
+            }
         }
 
         //Method for validation the expense

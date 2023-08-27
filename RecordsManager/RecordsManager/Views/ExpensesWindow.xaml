@@ -1,0 +1,88 @@
+﻿<Window x:Class="RecordsManager.Views.ExpensesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RecordsManager.Views"
+        mc:Ignorable="d"
+        Height="340" Width="740"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        FontSize="16"
+        Background="#FFC1C1C1">
+    <Grid Margin="5" Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Expenses:" Grid.Column="0" Margin="10,0,0,0" 
+               Width="80" Height="30" 
+               HorizontalAlignment="Left" VerticalAlignment="Top" />
+
+        <ListView x:Name="Expenses_ListView" 
+                  ItemsSource="{Binding Expenses}"
+                  SelectedItem="{Binding SelectedExpense}"
+                  Grid.Column="0"
+                  Margin="10,30,10,10">
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Delete expense"
+                              Command="{Binding DeleteExpenseCommand}" />
+                </ContextMenu>
+            </ListView.ContextMenu>
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Purpose" 
+                                    Width="310"
+                                    DisplayMemberBinding="{Binding Purpose}"/>
+                    <GridViewColumn Header="Price" 
+                                    Width="100"
+                                    DisplayMemberBinding="{Binding Price}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <GroupBox Header="Edit expense"
+                  Grid.Column="1" 
+                  Margin="0,15,10,10"
+                  IsEnabled="{Binding IsEditAllowed}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Label Content="Purpose:" 
+                       Grid.Row="0" Grid.Column="0"
+                       VerticalAlignment="Top" HorizontalAlignment="Left" Margin="0,10,0,0" />
+                <TextBox x:Name="Purpose_TextBox" 
+                         Text="{Binding Purpose}" Grid.Column="1"
+                         VerticalAlignment="Center" HorizontalAlignment="Left"
+                         TextWrapping="Wrap"
+                         Width="160" Height="106" />
+
+                <Label Content="Price:" 
+                       Grid.Row="1" Grid.Column="0"
+                       VerticalAlignment="Center" HorizontalAlignment="Left" />
+                <TextBox x:Name="Price_TextBox" 
+                         Text="{Binding Price}"
+                         Grid.Row="1" Grid.Column="1"
+                         VerticalAlignment="Center" HorizontalAlignment="Left"
+                         Width="160" />
+
+                <Button Content="Save" 
+                        Grid.Row="2" Grid.Column="1"
+                        VerticalAlignment="Center" HorizontalAlignment="Left"
+                        Width="160" Height="25" 
+                        Command="{Binding UpdateExpenseCommand}"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</Window>

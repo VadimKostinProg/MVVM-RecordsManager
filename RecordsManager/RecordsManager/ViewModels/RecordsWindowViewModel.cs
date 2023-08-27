@@ -20,7 +20,7 @@ namespace RecordsManager.ViewModels
         private ObservableCollection<RecordModel> _records;
         public ObservableCollection<RecordModel> Records
         {
-            get { return _records; }
+            get => _records; 
             set
             {
                 _records = value;
@@ -125,7 +125,7 @@ namespace RecordsManager.ViewModels
                 {
                     await _recordsService.UpdateAsync(SelectedRecord);
                     SelectedRecord = null;
-                    await EventSingleton.Instance.InvokeRecordsCollectionChanged();
+                    await EventSingleton.Instance.InvokeRecordsCollectionChangedAsync();
                 }
                 catch (Exception ex)
                 {
@@ -140,13 +140,13 @@ namespace RecordsManager.ViewModels
             {
                 try
                 {
-                    var result = MessageBox.Show("Are you shure you want to delete this record", string.Empty, MessageBoxButton.YesNo);
+                    var result = MessageBox.Show("Are you shure you want to delete this record?", string.Empty, MessageBoxButton.YesNo);
 
                     if (result == MessageBoxResult.No) return;
 
                     await _recordsService.DeleteAsync(SelectedRecord.Id);
                     SelectedRecord = null;
-                    await EventSingleton.Instance.InvokeRecordsCollectionChanged();
+                    await EventSingleton.Instance.InvokeRecordsCollectionChangedAsync();
                 }
                 catch(Exception ex)
                 {

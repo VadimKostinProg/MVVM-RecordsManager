@@ -45,7 +45,8 @@
                               SelectedItem="{Binding SelectedGroupedExpense}">
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Header="Manage expenses"/>
+                                <MenuItem Header="Manage expenses"
+                                          Command="{Binding OpenExpensesWindowCommand}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                         <ListView.View>

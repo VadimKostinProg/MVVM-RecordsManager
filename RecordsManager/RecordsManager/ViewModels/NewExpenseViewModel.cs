@@ -45,7 +45,7 @@ namespace RecordsManager.ViewModels
 
                     await _expensesService.CreateAsync(expense);
 
-                    await EventSingleton.Instance.InvokeExpensesCollectionChanged();
+                    await EventSingleton.Instance.InvokeExpensesCollectionChangedAsync();
 
                     window.Close();
                 }

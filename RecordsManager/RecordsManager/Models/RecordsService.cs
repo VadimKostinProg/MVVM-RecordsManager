@@ -59,7 +59,7 @@ namespace RecordsManager.Models
                 })
                 .ToList();
 
-            this.FillEmptyDates(recordsGrouped);
+            this.FillEmptyGroupedRecords(recordsGrouped);
 
             return recordsGrouped.OrderBy(record => record.Date.ToDateOnly()).ToList();
         }
@@ -102,7 +102,8 @@ namespace RecordsManager.Models
             await _recordsRepository.UpdateAsync(record);
         }
 
-        private void FillEmptyDates(List<RecordGroupedModel> recordsGrouped)
+        //Method for filling empty records grouped by date
+        private void FillEmptyGroupedRecords(List<RecordGroupedModel> recordsGrouped)
         {
             if (!recordsGrouped.Any()) return;
 

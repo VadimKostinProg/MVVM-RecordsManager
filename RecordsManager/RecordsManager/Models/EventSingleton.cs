@@ -21,7 +21,7 @@ namespace RecordsManager.Models
         public event UpdateCollectionDelegate RecordsCollectionChanged;
         public event UpdateCollectionDelegate ExpensesCollectionChanged;
 
-        public async Task InvokeRecordsCollectionChanged()
+        public async Task InvokeRecordsCollectionChangedAsync()
         {
             if(RecordsCollectionChanged != null)
             {
@@ -29,7 +29,7 @@ namespace RecordsManager.Models
             }
         }
 
-        public async Task InvokeExpensesCollectionChanged()
+        public async Task InvokeExpensesCollectionChangedAsync()
         {
             if (ExpensesCollectionChanged != null)
             {

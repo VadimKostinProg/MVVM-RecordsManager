@@ -55,7 +55,7 @@ namespace RecordsManager.ViewModels
 
                     await _recordService.CreateAsync(record);
 
-                    await EventSingleton.Instance.InvokeRecordsCollectionChanged();
+                    await EventSingleton.Instance.InvokeRecordsCollectionChangedAsync();
 
                     window.Close();
                 }
